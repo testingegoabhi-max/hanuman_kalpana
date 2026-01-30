@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divya Drishti - The Divine Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Gotu&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #000000;
+            /* Pure Black */
+            --container-bg: #111111;
+            /* Very dark grey for the card */
+            --text-main: #f0e6d2;
+            /* Parchment color for text */
+            --saffron: #ff9933;
+            --maroon: #d93025;
+            /* Brighter red for visibility on dark */
+            --gold: #ffd700;
+            --gold-dim: #b8860b;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Gotu', sans-serif;
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 60%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23333' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .main-frame {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px;
+            padding: 40px;
+            background-color: var(--container-bg);
+            box-shadow:
+                0 0 0 2px var(--gold-dim),
+                0 0 50px rgba(255, 153, 51, 0.1);
+            border-radius: 4px;
+            text-align: center;
+            border: 2px solid var(--gold);
+        }
+
+        /* Decorative Corners (CSS Only) */
+        .corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--gold);
+            transition: all 0.5s ease;
+        }
+
+        .top-left {
+            top: 10px;
+            left: 10px;
+            border-bottom: none;
+            border-right: none;
+        }
+
+        .top-right {
+            top: 10px;
+            right: 10px;
+            border-bottom: none;
+            border-left: none;
+        }
+
+        .bottom-left {
+            bottom: 10px;
+            left: 10px;
+            border-top: none;
+            border-right: none;
+        }
+
+        .bottom-right {
+            bottom: 10px;
+            right: 10px;
+            border-top: none;
+            border-left: none;
+        }
+
+        h1 {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 3.5rem;
+            margin: 0;
+            background: linear-gradient(to right, var(--gold), var(--saffron));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 2px 10px rgba(255, 215, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--gold-dim);
+            margin-bottom: 40px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--gold-dim);
+            font-family: 'Gotu', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            padding: 10px;
+            text-align: center;
+            outline: none;
+            resize: none;
+            height: 60px;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            border-bottom-color: var(--saffron);
+            box-shadow: 0 10px 20px -10px rgba(255, 153, 51, 0.2);
+        }
+
+        textarea::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--saffron);
+            padding: 12px 35px;
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 1.1rem;
+            color: var(--saffron);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--saffron), var(--fire));
+            transition: width 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            color: #2d0a04;
+            box-shadow: 0 0 20px rgba(255, 119, 34, 0.6);
+            border-color: var(--gold);
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn-saffron {
+            background: rgba(255, 119, 34, 0.1);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .btn.listening {
+            animation: pulse-fire 1.5s infinite;
+            background: var(--fire);
+            color: #2d0a04;
+            border-color: var(--fire);
+        }
+
+        @keyframes pulse-fire {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 51, 0, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(255, 51, 0, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 51, 0, 0);
+            }
+        }
+
+        /* Result Area */
+        #result-area {
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed rgba(255, 119, 34, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 4px solid var(--gold);
+        }
+
+        /* Chakra Loader */
+        .chakra {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px dashed var(--saffron);
+            border-top-color: var(--fire);
+            animation: spin 2s linear infinite;
+            display: none;
+            position: relative;
+            box-shadow: 0 0 20px rgba(255, 119, 34, 0.4);
+        }
+
+        .chakra::before,
+        .chakra::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+
+        .chakra::before {
+            width: 60px;
+            height: 60px;
+            border: 4px dotted var(--gold);
+            animation: spin-reverse 3s linear infinite;
+        }
+
+        .chakra::after {
+            width: 30px;
+            height: 30px;
+            background: var(--fire);
+            box-shadow: 0 0 15px var(--saffron);
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin-reverse {
+            to {
+                transform: translate(-50%, -50%) rotate(-360deg);
+            }
+        }
+
+
+        #statusText {
+            margin-top: 20px;
+            font-style: italic;
+            color: var(--text-main);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-frame">
+        <!-- Decorative Corners -->
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+
+        <h1>Jai Bajrangbali</h1>
+        <div class="subtitle">Hanuman AI - Divya Drishti</div>
+
+        <div class="input-group">
+            <textarea id="promptInput" placeholder="Describe what you wish to see..." rows="1"></textarea>
+        </div>
+
+        <div class="controls">
+            <button class="btn" id="micBtn" onclick="toggleVoice()">🎙️ Mantra (Speak)</button>
+            <button class="btn btn-saffron" onclick="generate()">👁️ Drishti (See)</button>
+        </div>
+
+        <div id="result-area">
+            <div class="chakra" id="spinner"></div>
+            <img id="imageDisplay" src="" style="display: none;" alt="Divine Creation">
+            <p id="placeholderText" style="color: rgba(128,0,0,0.5);">The canvas awaits your thought...</p>
+        </div>
+
+        <div id="statusText"></div>
+    </div>
+
+    <script>
+        const micBtn = document.getElementById('micBtn');
+        const promptInput = document.getElementById('promptInput');
+        const statusText = document.getElementById('statusText');
+        const spinner = document.getElementById('spinner');
+        const imageDisplay = document.getElementById('imageDisplay');
+        const placeholderText = document.getElementById('placeholderText');
+
+        // Recognition Setup
+        let recognition;
+        if ('webkitSpeechRecognition' in window) {
+            recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.lang = 'en-IN';
+
+            recognition.onstart = () => {
+                micBtn.classList.add('listening');
+                micBtn.innerText = "Listening...";
+            };
+            recognition.onend = () => {
+                micBtn.classList.remove('listening');
+                micBtn.innerText = "🎙️ Mantra (Speak)";
+            };
+            recognition.onresult = (e) => {
+                promptInput.value = e.results[0][0].transcript;
+            };
+        } else {
+            micBtn.style.display = 'none';
+        }
+
+        function toggleVoice() {
+            if (recognition) recognition.start();
+        }
+
+        async function generate() {
+            const prompt = promptInput.value;
+            if (!prompt) {
+                statusText.innerText = "Please provide a vision first.";
+                return;
+            }
+
+            // UI Reset
+            imageDisplay.style.display = 'none';
+            placeholderText.style.display = 'none';
+            spinner.style.display = 'block';
+            statusText.innerText = "Invoking the creative spirits...";
+
+            try {
+                const response = await fetch('/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: prompt })
+                });
+
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    imageDisplay.src = data.image_data;
+                    imageDisplay.onload = () => {
+                        spinner.style.display = 'none';
+                        imageDisplay.style.display = 'block';
+                        statusText.innerText = "Manifested by: " + data.service;
+                    };
+                } else {
+                    throw new Error(data.error || "Unknown error occurred");
+                }
+            } catch (e) {
+                spinner.style.display = 'none';
+                statusText.innerText = "Disruption in the ether: " + e.message;
+            }
+        }
+
+        // Auto-expand textarea
+        promptInput.addEventListener('input', function () {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+    </script>
+</body>
+
+</html>
